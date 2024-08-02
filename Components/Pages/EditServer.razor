@@ -1,0 +1,68 @@
+﻿@page "/servers/{id:int}"
+@* Note: :int it acts as constraint root constraint *@
+
+<h3>Edit Server Page</h3>
+@* Note: use id to load info about id - when the Parameter is passed and when the component receives that Parameter
+there is one lifecycle method that is triggered. OnParameterSet or OnParameterSetAsync *@
+
+<br />
+<br />
+@if (server != null){
+    <EditForm Model="server" FormName="formServer" OnValidSubmit="Submit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        @* how to show error msg is summary *@
+        <ValidationSummary></ValidationSummary>
+        
+        <InputNumber @bind-Value="server.ServerId" hidden></InputNumber>
+
+
+        <InputText @bind-Value="server.Name"></InputText>
+        <InputText @bind-Value="server.City"></InputText>
+        <InputCheckbox @bind-Value="server.IsOnline"></InputCheckbox>
+        <br/>
+        <br/>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        &nbsp;
+        <a href="/servers" class="btn btn-primary">Close</a>     
+        
+    </EditForm>
+    <br />
+    <p>@updateMsg</p> 
+   
+}
+  
+
+
+@code {
+    [Parameter]
+    public int Id {get; set;}
+    private string updateMsg = "";
+
+    [SupplyParameterFromForm]
+    private Server? server {get; set;}
+    protected override void OnParametersSet(){
+        server ??= ServersRepository.GetServerById(this.Id);
+        @* Note: only going to retrieve static data from respo if server is null 
+        if server is not null then ?? will skip right side data *@
+    }
+
+    private void Submit(){
+        if (server != null){
+            updateMsg = "Successfully updated!";
+            ServersRepository.UpdateServer(server.ServerId, server);
+        }
+    }
+
+}
+
+
+@* Note: Blazor uses 
+form - EditForm
+input - inputText / inputNumber / inputCheckbox *@
+
+@* Note: Blazor form submission 
+uses name - to differentiate one event handler from another 
+submit function
+SupplyParameterFromForm - to receive data *@
+
+

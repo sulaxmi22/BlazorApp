@@ -1,0 +1,61 @@
+@page "/servers"
+
+
+<h3>Servers</h3>
+
+@* <ServerComponent></ServerComponent>
+<ServerComponent></ServerComponent> *@
+
+<div class="container text-center">
+    <div class="row">
+        @foreach (var city in cities)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="@($"images/{city}.png")" class="card-img-top" alt="@city" style="height: 200px;">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary">@city</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@* @foreach (var city in cities)
+{
+    <button type="button" class="btn btn-primary">@city</button>
+    <text>&nbsp;</text>
+} *@
+
+<br/>
+<br/>
+
+<ul>
+    @foreach(var server in servers){
+        <li>
+            <span style="color:@(server.IsOnline ? "green" : "red")">
+            @server.Name is in @server.City that is @(server.IsOnline?"online":"offline")</span>
+            &nbsp;
+            <a href="/servers/@server.ServerId" class="btn btn-link">Edit</a>
+            &nbsp;
+            <EditForm Model="server" FormName="@($"form-server-{server.ServerId}")" 
+            OnValidSubmit="@(() => { DeleteServer(server.ServerId); })">
+                <button type="submit" class="btn btn-primary">Delete</button>
+            </EditForm>
+        </li>
+    }
+</ul>
+<p><a href="/servers/add" class="btn btn-primary">Add Server</a></p>
+@code{
+    private List<Server> servers = ServersRepository.GetServers();
+    @* private List<Server> servers = ServersRepository.GetServersByCity("Charlotte"); *@
+    private List<string> cities = CitiesRepository.GetCities();
+    private void DeleteServer(int serverId)
+    {
+        if (serverId > 0)
+        {
+            ServersRepository.DeleteServer(serverId);
+        }
+    }
+
+}

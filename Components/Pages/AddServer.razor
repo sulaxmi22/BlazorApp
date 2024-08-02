@@ -1,0 +1,49 @@
+﻿@page "/servers/add"
+
+<h3>Add Server Page</h3>
+
+<br />
+<br />
+@if (server != null){
+    <EditForm Model="server" FormName="formServer" OnValidSubmit="Submit">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        @* how to show error msg is summary *@
+        <ValidationSummary></ValidationSummary>
+
+        <InputNumber @bind-Value="server.ServerId" hidden></InputNumber>
+
+
+        <InputText @bind-Value="server.Name" class="form-control" placeholder="Server Name"></InputText>
+        &nbsp;
+        <InputText @bind-Value="server.City" class="form-control" placeholder="Server City"></InputText>
+        &nbsp;
+        <InputCheckbox @bind-Value="server.IsOnline"></InputCheckbox>
+        <br/>
+        <br/>
+        <button class="btn btn-primary" type="submit">Save</button>
+        &nbsp;
+        <a href="/servers" class="btn btn-primary">Close</a>
+        &nbsp;
+        <p>@note</p> 
+    </EditForm>
+    <br />
+    <p>@updateMsg</p>
+}
+
+
+
+@code {
+    [SupplyParameterFromForm]
+    private Server server {get; set;} = new Server();
+    private string updateMsg = "";
+    private string note = "Please enter city as Charlotte / New York City / Los Angeles for successful operation.";
+
+
+    private void Submit(){
+        if (server != null){
+            updateMsg = "Successfully added!";
+            ServersRepository.AddServer(server);
+        }
+    }
+}
+

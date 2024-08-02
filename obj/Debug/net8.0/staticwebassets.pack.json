@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/obj/Debug/net8.0/scopedcss/projectbundle/BlazorApp.bundle.scp.css",
+      "PackagePath": "staticwebassets/BlazorApp.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/images/Charlotte.png",
+      "PackagePath": "staticwebassets/images/Charlotte.png"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/images/Los Angeles.png",
+      "PackagePath": "staticwebassets/images/Los Angeles.png"
+    },
+    {
+      "Id": "/Users/sulaxmi/Desktop/BlazorApp/wwwroot/images/New York City.png",
+      "PackagePath": "staticwebassets/images/New York City.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.BlazorApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.BlazorApp.props",
+      "PackagePath": "build\\BlazorApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.BlazorApp.props",
+      "PackagePath": "buildMultiTargeting\\BlazorApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.BlazorApp.props",
+      "PackagePath": "buildTransitive\\BlazorApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
